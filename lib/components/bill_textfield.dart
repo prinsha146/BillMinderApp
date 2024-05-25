@@ -33,12 +33,12 @@ class BillTextField extends StatelessWidget {
           RichText(
             text: TextSpan(
               text: label,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.black, // Adjust this if you use a different text color
               ),
               children: isRequired ? [
-                TextSpan(
+                const TextSpan(
                   text: ' *',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -54,9 +54,10 @@ class BillTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TextFormField(
+              //initialValue: "Text",
               obscureText: isPassword, // Use isPassword to determine if text should be obscured
               textInputAction: textInputAction,
-              controller: controllerName,
+              //controller: controllerName,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: hintText,
@@ -64,8 +65,14 @@ class BillTextField extends StatelessWidget {
                   fontSize: height * .02,
                   fontWeight: FontWeight.w300,
                 ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 10.0), // Add padding here
+                contentPadding: const EdgeInsets.symmetric(horizontal: 10.0), // Add padding here
               ),
+              // validator: (value) {
+              //       if (value == null || value.isEmpty) {
+              //         return 'Please enter this value';
+              //       }
+              //       return null;
+              //     },
             ),
           ),
         ],

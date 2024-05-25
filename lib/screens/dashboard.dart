@@ -1,4 +1,6 @@
-//import 'package:billminder/screens/login.dart';
+import 'package:billminder/screens/insights.dart';
+import 'package:billminder/screens/login.dart';
+import 'package:billminder/screens/notifications.dart';
 import 'package:billminder/screens/view_bills.dart';
 import 'package:billminder/utils/color_pallette.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +26,15 @@ class _DashboardState extends State<Dashboard> {
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     ViewBills(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+    Insights(),
+    // Text(
+    //   'Index 2: School',
+    //   style: optionStyle,
+    // ),
+    // Text(
+    //   'Index 3: Settings',
+    //   style: optionStyle,
+    // ),
   ];
 
   void _onItemTapped(int index) {
@@ -56,12 +59,37 @@ class _DashboardState extends State<Dashboard> {
       ),
       appBar: AppBar(
         backgroundColor: Pallette.billminder_primary,
+        //title: const Text('BillMinder'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Notifications()),
+              );
+            }, 
+            icon: const Icon(Icons.add_alert)
+          ),
+          IconButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+              );
+            }, 
+            icon: const Icon(Icons.account_circle)
+          )
+        ],
         leading: MenuBar(children: [],
 
         ),
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+          
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

@@ -1,7 +1,9 @@
+import 'package:billminder/screens/signup.dart';
 import 'package:billminder/utils/color_pallette.dart';
 import 'package:billminder/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:billminder/components/textfield.dart';
+import 'package:flutter/gestures.dart';
 
 import 'dashboard.dart';
 
@@ -19,7 +21,8 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Pallette.billminder_primary,
-      body: Container(
+      body: SingleChildScrollView(
+        child: Container(
         width: pw(context, 100),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -116,14 +119,23 @@ class _LoginState extends State<Login> {
                       margin: EdgeInsets.symmetric(
                         horizontal: pw(context, 5), vertical: pw(context,5)
                       ),
-                      child: const Text(
-                        'Sign up?',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.black,
-                            ),
-                      ),
+                      
+                      child: RichText(
+                        text: TextSpan(
+                          style: const TextStyle(
+                            color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Sign Up?',
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.push(
+                                      context, MaterialPageRoute(builder: (context) => const Signup()));
+                                  }),
+                          ],
+                        )
+                      )
                     )
                   ],
                 ),
@@ -134,6 +146,7 @@ class _LoginState extends State<Login> {
         ),
         
       ),
+      )
 
     );
   }

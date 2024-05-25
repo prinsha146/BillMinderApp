@@ -15,7 +15,7 @@ class _ViewBillsState extends State<ViewBills> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ph(context, 75.66),
+      //height: ph(context, 75.66),
       width: pw(context, 100),
       color: Pallette.billminder_secondary,
       child: Container(
@@ -24,17 +24,17 @@ class _ViewBillsState extends State<ViewBills> {
             vertical: ph(context, 1)
         ),
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // Container(
-            //   child: Text("Bills",
-            //     style: TextStyle(
-            //       fontWeight: FontWeight.bold,
-            //       fontSize: pw(context, 5)
-            //     ),
-            //   ),
-            // ),
+            Container(
+              child: Text("Bills",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: pw(context, 5)
+                ),
+              ),
+            ),
             Container(
               height: ph(context, 72),
               child: ListView.builder(
